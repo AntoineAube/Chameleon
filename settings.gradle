@@ -3,4 +3,5 @@ include ':chameleon-core'
 include ':chameleon-patterns'
 include ':chameleon-cli'
 include ':chameleon-gui'
+include 'chameleon-pictures'
 
