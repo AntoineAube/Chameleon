@@ -1,5 +1,6 @@
 rootProject.name = 'chameleon'
 include ':chameleon-core'
+include ':chameleon-patterns'
 include ':chameleon-cli'
 include ':chameleon-gui'
 

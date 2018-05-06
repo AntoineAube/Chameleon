@@ -43,6 +43,10 @@ public abstract class ConcreteConcealmentPattern {
         return width;
     }
 
+    protected Position getLastPosition() {
+        return lastPosition;
+    }
+
     public final Position nextPosition() {
         lastPosition = hasInitializedPosition() ? nextPositionWithInitializedPosition() : initialPosition();
 

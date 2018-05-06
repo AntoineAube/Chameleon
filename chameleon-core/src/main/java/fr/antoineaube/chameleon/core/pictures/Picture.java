@@ -6,6 +6,5 @@ public interface Picture {
 
     int getHeight();
     int getWidth();
-    int getColourDepth();
     ChannelColour[] getColourChannels();
 }

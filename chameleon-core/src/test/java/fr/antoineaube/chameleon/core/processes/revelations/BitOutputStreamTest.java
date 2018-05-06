@@ -1,5 +1,6 @@
 package fr.antoineaube.chameleon.core.processes.revelations;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 
@@ -10,6 +11,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
+@DisplayName("Bit output stream")
 class BitOutputStreamTest {
 
     private static final List<WritingCase> WRITING_CASES = Arrays.asList(
