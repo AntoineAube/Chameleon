@@ -7,11 +7,13 @@ public class ConcealmentStep {
     private final int bitsNumber;
     private final ChannelColour channel;
     private final ConcealmentPattern followedPattern;
+    private final boolean reversed;
 
-    public ConcealmentStep(int bitsNumber, ChannelColour channel, ConcealmentPattern followedPattern) {
+    public ConcealmentStep(int bitsNumber, ChannelColour channel, ConcealmentPattern followedPattern, boolean reversed) {
         this.bitsNumber = bitsNumber;
         this.channel = channel;
         this.followedPattern = followedPattern;
+        this.reversed = reversed;
     }
 
     public int getBitsNumber() {
@@ -24,5 +26,9 @@ public class ConcealmentStep {
 
     public ConcealmentPattern getFollowedPattern() {
         return followedPattern;
+    }
+
+    public boolean isReversed() {
+        return reversed;
     }
 }

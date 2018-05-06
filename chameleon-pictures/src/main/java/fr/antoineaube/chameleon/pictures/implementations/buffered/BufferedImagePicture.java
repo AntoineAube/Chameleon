@@ -2,6 +2,8 @@ package fr.antoineaube.chameleon.pictures.implementations.buffered;
 
 import fr.antoineaube.chameleon.core.pictures.Picture;
 import fr.antoineaube.chameleon.core.pictures.structures.ChannelColour;
+import fr.antoineaube.chameleon.core.pictures.structures.Pixel;
+import fr.antoineaube.chameleon.core.pictures.structures.Position;
 
 import java.awt.image.BufferedImage;
 
@@ -26,5 +28,10 @@ public class BufferedImagePicture implements Picture {
     @Override
     public ChannelColour[] getColourChannels() {
         return AWTColourSpaceTranslator.findByCode(image.getType());
+    }
+
+    @Override
+    public Pixel getPixel(Position position) {
+        return null;
     }
 }
