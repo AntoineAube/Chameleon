@@ -1,10 +1,10 @@
 package fr.antoineaube.chameleon.core.processes.concealments;
 
 import fr.antoineaube.chameleon.core.configurations.MagicNumber;
+import fr.antoineaube.chameleon.core.processes.concealments.utils.EnhancedSequenceInputStream;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.io.SequenceInputStream;
 
 public class MagicNumberAppender {
 
@@ -15,6 +15,6 @@ public class MagicNumberAppender {
     }
 
     public InputStream appendMagicNumber(InputStream input) {
-        return new SequenceInputStream(input, new ByteArrayInputStream(magicNumber.getContent()));
+        return new EnhancedSequenceInputStream(input, new ByteArrayInputStream(magicNumber.getContent()));
     }
 }

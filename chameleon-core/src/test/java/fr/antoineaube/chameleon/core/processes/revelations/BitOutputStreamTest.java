@@ -22,6 +22,7 @@ class BitOutputStreamTest {
             new WritingCase().withWrittenValues(1, 1, 0, 1, 0, 1, 1, 0).withExpectedWritten((byte) 0b11010110)
     );
 
+    @DisplayName("Should write bits")
     @TestFactory
     Stream<DynamicTest> shouldWriteBits() {
         return WRITING_CASES.stream().map(writingCase -> {
