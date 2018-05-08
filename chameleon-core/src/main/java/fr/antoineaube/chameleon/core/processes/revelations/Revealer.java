@@ -4,7 +4,11 @@ import fr.antoineaube.chameleon.core.configurations.ChameleonConfiguration;
 import fr.antoineaube.chameleon.core.pictures.Picture;
 import fr.antoineaube.chameleon.core.processes.ChameleonProcess;
 
-import java.io.InputStream;
+import java.io.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class Revealer extends ChameleonProcess {
 
@@ -12,8 +16,22 @@ public class Revealer extends ChameleonProcess {
         super(configuration);
     }
 
-    public InputStream process(Picture hideout) {
-        // TODO To be implemented.
-        throw new UnsupportedOperationException();
+    public InputStream process(Picture hideout) throws IOException {
+        File temporaryFile = File.createTempFile("revealed-message-" + UUID.randomUUID(), ".tmp");
+        temporaryFile.deleteOnExit();
+
+        try (MagicNumberAlarmBitOutputStream message = new MagicNumberAlarmBitOutputStream(new FileOutputStream(temporaryFile), getConfiguration().getMagicNumber())) {
+            for (StepRevealer step : createStepRevealers(hideout, message)) {
+                step.process();
+            }
+        }
+
+        return new FileInputStream(temporaryFile);
+    }
+
+    private List<StepRevealer> createStepRevealers(Picture hideout, MagicNumberAlarmBitOutputStream message) {
+        return Arrays.stream(getConfiguration().getSteps())
+                .map(step -> new StepRevealer(hideout, step, message))
+                .collect(Collectors.toList());
     }
 }

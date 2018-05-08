@@ -19,7 +19,8 @@ class BitOutputStreamTest {
             new WritingCase().withWrittenValues(1).withExpectedWritten((byte) 0b10000000),
             new WritingCase().withWrittenValues(1, 1, 0, 1, 0).withExpectedWritten((byte) 0b11010000),
             new WritingCase().withWrittenValues(1, 1, 0, 1, 0, 1, 1, 0, 1, 0).withExpectedWritten((byte) 0b11010110, (byte) 0b10000000),
-            new WritingCase().withWrittenValues(1, 1, 0, 1, 0, 1, 1, 0).withExpectedWritten((byte) 0b11010110)
+            new WritingCase().withWrittenValues(1, 1, 0, 1, 0, 1, 1, 0).withExpectedWritten((byte) 0b11010110),
+            new WritingCase().withWrittenValues(0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0).withExpectedWritten((byte) 0b01100001, (byte) 0b01100010)
     );
 
     @DisplayName("Should write bits")

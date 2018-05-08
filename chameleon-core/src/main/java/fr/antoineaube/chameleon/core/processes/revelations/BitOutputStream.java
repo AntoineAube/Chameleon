@@ -7,7 +7,7 @@ public class BitOutputStream extends OutputStream {
 
     private static final byte MASK = 0b00000001;
 
-    private final OutputStream initialStream;
+    protected final OutputStream initialStream;
     private byte currentByte;
     private int currentByteSize;
 
