@@ -25,7 +25,6 @@ public class Concealer extends ChameleonProcess {
         InputStream processedMessage = appender.appendMagicNumber(message);
 
         for (StepConcealer step : createStepConcealers(hideout, new BitInputStream(processedMessage))) {
-            System.out.println("new step");
             step.process();
         }
 

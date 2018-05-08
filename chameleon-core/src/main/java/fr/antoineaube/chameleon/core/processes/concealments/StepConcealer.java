@@ -24,7 +24,6 @@ public class StepConcealer {
 
     public void process() throws IOException {
         if (message.available() == 0) {
-            System.out.println("empty message");
             return;
         }
 
@@ -33,8 +32,6 @@ public class StepConcealer {
         while (message.available() > 0 && pattern.hasNext()) {
             int valueToMerge = nextValueToMerge();
             Pixel currentPixel = hideout.getPixel(pattern.nextPosition());
-
-            System.out.println(Integer.toBinaryString(valueToMerge));
 
             int currentValue = currentPixel.getColourValue(step.getChannel());
 
