@@ -26,12 +26,12 @@ public class SimpleTestPixel implements Pixel {
     }
 
     @Override
-    public int getColourValue(ChannelColour colour) {
+    public int safeGetColourValue(ChannelColour colour) {
         return coloursValues.get(colour);
     }
 
     @Override
-    public void setColourValue(ChannelColour colour, int newValue) {
+    public void safeSetColourValue(ChannelColour colour, int newValue) {
         coloursValues.put(colour, newValue);
     }
 }

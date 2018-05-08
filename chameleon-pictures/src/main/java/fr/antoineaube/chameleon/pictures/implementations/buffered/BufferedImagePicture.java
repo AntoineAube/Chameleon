@@ -32,6 +32,6 @@ public class BufferedImagePicture implements Picture {
 
     @Override
     public Pixel getPixel(Position position) {
-        return null;
+        return new BufferedImagePixel(this.image, position);
     }
 }

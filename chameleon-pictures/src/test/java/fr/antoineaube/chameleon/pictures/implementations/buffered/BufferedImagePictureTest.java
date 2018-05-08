@@ -17,7 +17,7 @@ class BufferedImagePictureTest {
 
     @Test
     void shouldCorrectlyReadABMPPicture() throws IOException {
-        URL imageUrl = getClass().getClassLoader().getResource("images_samples/chameleon.bmp");
+        URL imageUrl = getClass().getClassLoader().getResource("images-samples/chameleon.bmp");
 
         assert imageUrl != null;
 
