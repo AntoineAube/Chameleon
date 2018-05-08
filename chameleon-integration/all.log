@@ -1,4 +1,0 @@
-2018-05-08 20:54:46.976 [main] INFO  fr.antoineaube.chameleon.integration.tests.framework.BaseIT - Running configuration:
-ChameleonConfiguration{magicNumber=[-38, -85], steps=[ConcealmentStep{bitsNumber=1, channel=BLUE, followedPattern=HORIZONTAL_LINEAR, reversed=false}, ConcealmentStep{bitsNumber=1, channel=GREEN, followedPattern=HORIZONTAL_LINEAR, reversed=true}, ConcealmentStep{bitsNumber=1, channel=RED, followedPattern=HORIZONTAL_LINEAR, reversed=true}]}
-2018-05-08 20:54:47.309 [main] INFO  fr.antoineaube.chameleon.integration.tests.framework.BaseIT - Running configuration:
-ChameleonConfiguration{magicNumber=[-38, -85], steps=[ConcealmentStep{bitsNumber=1, channel=BLUE, followedPattern=HORIZONTAL_LINEAR, reversed=false}, ConcealmentStep{bitsNumber=1, channel=GREEN, followedPattern=HORIZONTAL_LINEAR, reversed=true}, ConcealmentStep{bitsNumber=1, channel=RED, followedPattern=HORIZONTAL_LINEAR, reversed=true}]}

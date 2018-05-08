@@ -57,7 +57,7 @@ public abstract class BaseIT {
                     }
                 })
 
-                // TODO Remove the cases when the message is to big for the "image & configuration".
+                // TODO Remove the cases when the message is too big for the "image & configuration".
 
                 .flatMap(pictureBundle -> getMessagesFiles().stream().map(messageFile -> {
                     String caseName = "Image: '" + pictureBundle.file.getName() + "' ; message: '" + messageFile.getName() + "'";
