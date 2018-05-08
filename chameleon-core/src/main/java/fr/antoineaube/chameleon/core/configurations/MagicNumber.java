@@ -1,5 +1,7 @@
 package fr.antoineaube.chameleon.core.configurations;
 
+import java.util.Arrays;
+
 public class MagicNumber {
 
     private final byte[] content;
@@ -24,5 +26,10 @@ public class MagicNumber {
         }
 
         return bits;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(content);
     }
 }

@@ -9,21 +9,33 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}
-
 sourceSets {
     benchmark
+
 }
 
 dependencies {
+    testCompile project(':chameleon-core')
+    testCompile project(':chameleon-pictures')
+    testCompile project(':chameleon-patterns')
+
     benchmarkCompile project(':chameleon-core')
     benchmarkCompile project(':chameleon-pictures')
     benchmarkCompile project(':chameleon-patterns')
 
     benchmarkCompile 'org.openjdk.jmh:jmh-core:1.21'
     benchmarkCompile 'org.openjdk.jmh:jmh-generator-annprocess:1.21'
+
+    testImplementation(
+            'org.junit.jupiter:junit-jupiter-api:5.1.0'
+    )
+    testRuntimeOnly(
+            'org.junit.jupiter:junit-jupiter-engine:5.1.0'
+    )
+}
+
+test {
+    useJUnitPlatform()
 }
 
 task benchmark(type: JavaExec, description: 'Executing JMH benchmarks') {
