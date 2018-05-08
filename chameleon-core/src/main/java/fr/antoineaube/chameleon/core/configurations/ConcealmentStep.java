@@ -31,4 +31,14 @@ public class ConcealmentStep {
     public boolean isReversed() {
         return reversed;
     }
+
+    @Override
+    public String toString() {
+        return "ConcealmentStep{" +
+                "bitsNumber=" + bitsNumber +
+                ", channel=" + channel +
+                ", followedPattern=" + followedPattern.getName() +
+                ", reversed=" + reversed +
+                '}';
+    }
 }

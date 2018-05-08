@@ -1,5 +1,7 @@
 package fr.antoineaube.chameleon.core.configurations;
 
+import java.util.Arrays;
+
 public class ChameleonConfiguration {
 
     private final MagicNumber magicNumber;
@@ -16,5 +18,13 @@ public class ChameleonConfiguration {
 
     public ConcealmentStep[] getSteps() {
         return steps;
+    }
+
+    @Override
+    public String toString() {
+        return "ChameleonConfiguration{" +
+                "magicNumber=" + magicNumber +
+                ", steps=" + Arrays.toString(steps) +
+                '}';
     }
 }

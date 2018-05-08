@@ -10,6 +10,8 @@ import fr.antoineaube.chameleon.core.processes.concealments.Concealer;
 import fr.antoineaube.chameleon.core.processes.revelations.Revealer;
 import fr.antoineaube.chameleon.pictures.implementations.buffered.BufferedImagePicture;
 import org.apache.commons.io.IOUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
@@ -30,6 +32,8 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public abstract class BaseIT {
 
+    private static final Logger LOGGER = LogManager.getLogger(BaseIT.class);
+
     private MagicNumber magicNumber;
     private List<StepDescriber> stepDescribers;
 
@@ -48,8 +52,7 @@ public abstract class BaseIT {
                     try {
                         return new PictureBundle(new BufferedImagePicture(ImageIO.read(imageFile)), imageFile);
                     } catch (IOException e) {
-                        // TODO Log this error somehow.
-                        e.printStackTrace();
+                        LOGGER.error("Error while reading the file into an image", e);
                         return null;
                     }
                 })
@@ -67,6 +70,8 @@ public abstract class BaseIT {
 
     private void testCase(File imageFile, File messageFile) throws IOException {
         ChameleonConfiguration configuration = createConfiguration();
+
+        LOGGER.info("Running configuration:\n" + configuration);
 
         Picture picture = new BufferedImagePicture(ImageIO.read(imageFile));
 

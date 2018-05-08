@@ -2,11 +2,13 @@ package fr.antoineaube.chameleon.integration.tests.implementation;
 
 import fr.antoineaube.chameleon.integration.tests.framework.BaseIT;
 import fr.antoineaube.chameleon.patterns.linear.horizontal.HorizontalLinearPattern;
+import org.junit.jupiter.api.DisplayName;
 
 import static fr.antoineaube.chameleon.core.pictures.structures.ChannelColour.BLUE;
 import static fr.antoineaube.chameleon.core.pictures.structures.ChannelColour.GREEN;
 import static fr.antoineaube.chameleon.core.pictures.structures.ChannelColour.RED;
 
+@DisplayName("Horizontal Linear + 1 bits per channel + BGR")
 public class SimpleBGRConfiguration extends BaseIT {
 
     @Override
