@@ -34,4 +34,8 @@ public class BufferedImagePicture implements Picture {
     public Pixel getPixel(Position position) {
         return new BufferedImagePixel(this.image, position);
     }
+
+    public BufferedImage getImage() {
+        return image;
+    }
 }

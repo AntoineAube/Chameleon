@@ -24,8 +24,10 @@ public class Concealer extends ChameleonProcess {
     public Picture process(InputStream message, Picture hideout) throws IOException {
         InputStream processedMessage = appender.appendMagicNumber(message);
 
-        for (StepConcealer step : createStepConcealers(hideout, new BitInputStream(processedMessage))) {
-            step.process();
+        try (BitInputStream bitStream = new BitInputStream(processedMessage)) {
+            for (StepConcealer step : createStepConcealers(hideout, bitStream)) {
+                step.process();
+            }
         }
 
         return hideout;
