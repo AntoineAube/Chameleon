@@ -1,23 +1,8 @@
-group 'fr.antoineaube'
-version '1.0-SNAPSHOT'
-
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
 sourceSets {
     benchmark
-
 }
 
 dependencies {
-    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.0'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
-
     testCompile project(':chameleon-core')
     testCompile project(':chameleon-pictures')
     testCompile project(':chameleon-patterns')
@@ -28,17 +13,6 @@ dependencies {
 
     benchmarkCompile 'org.openjdk.jmh:jmh-core:1.21'
     benchmarkCompile 'org.openjdk.jmh:jmh-generator-annprocess:1.21'
-
-    testImplementation(
-            'org.junit.jupiter:junit-jupiter-api:5.1.0'
-    )
-    testRuntimeOnly(
-            'org.junit.jupiter:junit-jupiter-engine:5.1.0'
-    )
-}
-
-test {
-    useJUnitPlatform()
 }
 
 task benchmark(type: JavaExec, description: 'Executing JMH benchmarks') {
