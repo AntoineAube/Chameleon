@@ -6,7 +6,7 @@ jdk:
 branches:
   only:
     - master
-    
+
 cache:
   directories:
     - $HOME/.gradle
