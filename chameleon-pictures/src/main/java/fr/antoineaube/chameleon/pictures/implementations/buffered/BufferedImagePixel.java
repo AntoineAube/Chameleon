@@ -8,7 +8,7 @@ import fr.antoineaube.chameleon.core.pictures.structures.Position;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class BufferedImagePixel implements Pixel {
+public class BufferedImagePixel extends Pixel {
 
     private final BufferedImage origin;
     private final Position positionInPicture;

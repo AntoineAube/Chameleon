@@ -3,7 +3,6 @@ package fr.antoineaube.chameleon.core.processes.concealments;
 import fr.antoineaube.chameleon.core.configurations.ChameleonConfiguration;
 import fr.antoineaube.chameleon.core.pictures.Picture;
 import fr.antoineaube.chameleon.core.processes.ChameleonProcess;
-import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;

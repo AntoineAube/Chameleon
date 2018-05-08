@@ -1,6 +1,7 @@
 package fr.antoineaube.chameleon.pictures.implementations.buffered;
 
 import fr.antoineaube.chameleon.core.pictures.Picture;
+import fr.antoineaube.chameleon.core.pictures.PictureSaver;
 import fr.antoineaube.chameleon.core.pictures.structures.ChannelColour;
 import fr.antoineaube.chameleon.core.pictures.structures.Pixel;
 import fr.antoineaube.chameleon.core.pictures.structures.Position;
@@ -33,6 +34,11 @@ public class BufferedImagePicture implements Picture {
     @Override
     public Pixel getPixel(Position position) {
         return new BufferedImagePixel(this.image, position);
+    }
+
+    @Override
+    public PictureSaver getSaver() {
+        return new BufferedImagePictureSaver(this);
     }
 
     public BufferedImage getImage() {

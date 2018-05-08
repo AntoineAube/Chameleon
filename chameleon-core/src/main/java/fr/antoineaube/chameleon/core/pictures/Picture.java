@@ -10,4 +10,5 @@ public interface Picture {
     int getWidth();
     ChannelColour[] getColourChannels();
     Pixel getPixel(Position position);
+    PictureSaver getSaver();
 }

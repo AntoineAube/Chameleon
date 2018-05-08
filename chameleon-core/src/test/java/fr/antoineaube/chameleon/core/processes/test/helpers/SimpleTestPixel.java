@@ -6,7 +6,7 @@ import fr.antoineaube.chameleon.core.pictures.structures.Pixel;
 import java.util.EnumMap;
 import java.util.Map;
 
-public class SimpleTestPixel implements Pixel {
+public class SimpleTestPixel extends Pixel {
 
     private final ChannelColour[] orderedChannels;
     private final Map<ChannelColour, Integer> coloursValues;

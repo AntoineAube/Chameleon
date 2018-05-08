@@ -1,6 +1,7 @@
 package fr.antoineaube.chameleon.core.processes.test.helpers;
 
 import fr.antoineaube.chameleon.core.pictures.Picture;
+import fr.antoineaube.chameleon.core.pictures.PictureSaver;
 import fr.antoineaube.chameleon.core.pictures.structures.ChannelColour;
 import fr.antoineaube.chameleon.core.pictures.structures.Pixel;
 import fr.antoineaube.chameleon.core.pictures.structures.Position;
@@ -44,5 +45,10 @@ public class SimpleTestPicture implements Picture {
     @Override
     public Pixel getPixel(Position position) {
         return pixels.get(position);
+    }
+
+    @Override
+    public PictureSaver getSaver() {
+        return null;
     }
 }
