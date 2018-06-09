@@ -4,10 +4,10 @@ import fr.antoineaube.chameleon.core.pictures.structures.ChannelColour;
 
 public class ConcealmentStep {
 
-    private final int bitsNumber;
-    private final ChannelColour channel;
-    private final ConcealmentPattern followedPattern;
-    private final boolean reversed;
+    private int bitsNumber;
+    private ChannelColour channel;
+    private ConcealmentPattern followedPattern;
+    private boolean reversed;
 
     public ConcealmentStep(int bitsNumber, ChannelColour channel, ConcealmentPattern followedPattern, boolean reversed) {
         this.bitsNumber = bitsNumber;
@@ -20,16 +20,32 @@ public class ConcealmentStep {
         return bitsNumber;
     }
 
+    public void setBitsNumber(int bitsNumber) {
+        this.bitsNumber = bitsNumber;
+    }
+
     public ChannelColour getChannel() {
         return channel;
+    }
+
+    public void setChannel(ChannelColour channel) {
+        this.channel = channel;
     }
 
     public ConcealmentPattern getFollowedPattern() {
         return followedPattern;
     }
 
+    public void setFollowedPattern(ConcealmentPattern followedPattern) {
+        this.followedPattern = followedPattern;
+    }
+
     public boolean isReversed() {
         return reversed;
+    }
+
+    public void setReversed(boolean reversed) {
+        this.reversed = reversed;
     }
 
     @Override
@@ -37,7 +53,7 @@ public class ConcealmentStep {
         return "ConcealmentStep{" +
                 "bitsNumber=" + bitsNumber +
                 ", channel=" + channel +
-                ", followedPattern=" + followedPattern.getName() +
+                ", followedPattern=" + (followedPattern == null ? null : followedPattern.getName()) +
                 ", reversed=" + reversed +
                 '}';
     }

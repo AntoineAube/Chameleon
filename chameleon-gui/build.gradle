@@ -1,0 +1,5 @@
+dependencies {
+    compile project(':chameleon-core')
+    compile project(':chameleon-pictures')
+    compile project(':chameleon-patterns')
+}
