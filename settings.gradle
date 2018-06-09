@@ -3,7 +3,6 @@ rootProject.name = 'chameleon'
 include 'chameleon-core',
         'chameleon-patterns',
         'chameleon-pictures',
-        'chameleon-cli',
         'chameleon-gui',
         'chameleon-integration'
 
