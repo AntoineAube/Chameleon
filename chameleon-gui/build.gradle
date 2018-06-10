@@ -3,3 +3,13 @@ dependencies {
     compile project(':chameleon-pictures')
     compile project(':chameleon-patterns')
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'fr.antoineaube.chameleon.gui.GUILauncher'
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
