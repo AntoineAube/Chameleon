@@ -39,4 +39,9 @@ public class PositionsPattern implements ConcealmentPattern {
             }
         };
     }
+
+    @Override
+    public int countUsedPixels(Picture hideout) {
+        return positions.length;
+    }
 }

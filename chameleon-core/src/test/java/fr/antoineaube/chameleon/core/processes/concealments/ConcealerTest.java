@@ -8,6 +8,7 @@ import fr.antoineaube.chameleon.core.pictures.structures.ChannelColour;
 import fr.antoineaube.chameleon.core.pictures.structures.Position;
 import fr.antoineaube.chameleon.core.processes.test.helpers.SimpleTestPicture;
 import fr.antoineaube.chameleon.core.processes.test.helpers.SinglePositionPattern;
+import fr.antoineaube.chameleon.core.processes.verifications.VerificationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -41,7 +42,7 @@ class ConcealerTest {
 
     @DisplayName("Should completely hide a short enough message")
     @Test
-    void shouldCompletelyHideAShortEnoughMessage() throws IOException {
+    void shouldCompletelyHideAShortEnoughMessage() throws IOException, VerificationException {
         Picture hideout = new SimpleTestPicture(3, 3);
         InputStream input = new ByteArrayInputStream(new byte[] { 0b1101 });
 

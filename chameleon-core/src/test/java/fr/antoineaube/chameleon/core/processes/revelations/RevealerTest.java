@@ -7,6 +7,7 @@ import fr.antoineaube.chameleon.core.pictures.structures.ChannelColour;
 import fr.antoineaube.chameleon.core.pictures.structures.Position;
 import fr.antoineaube.chameleon.core.processes.test.helpers.PositionsPattern;
 import fr.antoineaube.chameleon.core.processes.test.helpers.SimpleTestPicture;
+import fr.antoineaube.chameleon.core.processes.verifications.VerificationException;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RevealerTest {
 
     @Test
-    void shouldFindMessageInOneStep() throws IOException {
+    void shouldFindMessageInOneStep() throws IOException, VerificationException {
         String message = "a"; // 01100001
         MagicNumber magicNumber = new MagicNumber("b".getBytes()); // 01100010
 
@@ -47,7 +48,7 @@ class RevealerTest {
     }
 
     @Test
-    void shouldFindMessageInSeveralSteps() throws IOException {
+    void shouldFindMessageInSeveralSteps() throws IOException, VerificationException {
         String message = "ac"; // 01100001 01100011
         MagicNumber magicNumber = new MagicNumber("b".getBytes()); // 01100010
 

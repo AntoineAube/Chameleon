@@ -19,4 +19,9 @@ public class HorizontalLinearPattern implements ConcealmentPattern {
 
         return new HorizontalLinearConcretePattern(hideout);
     }
+
+    @Override
+    public int countUsedPixels(Picture hideout) {
+        return hideout.getHeight() * hideout.getWidth();
+    }
 }

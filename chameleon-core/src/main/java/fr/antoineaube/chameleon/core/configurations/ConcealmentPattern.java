@@ -7,4 +7,5 @@ public interface ConcealmentPattern {
 
     String getName();
     ConcreteConcealmentPattern createPattern(Picture hideout, boolean reversed);
+    int countUsedPixels(Picture hideout);
 }

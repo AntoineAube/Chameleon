@@ -37,4 +37,9 @@ public class SinglePositionPattern implements ConcealmentPattern {
             }
         };
     }
+
+    @Override
+    public int countUsedPixels(Picture hideout) {
+        return 1;
+    }
 }

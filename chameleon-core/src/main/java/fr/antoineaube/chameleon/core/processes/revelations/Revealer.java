@@ -3,6 +3,8 @@ package fr.antoineaube.chameleon.core.processes.revelations;
 import fr.antoineaube.chameleon.core.configurations.ChameleonConfiguration;
 import fr.antoineaube.chameleon.core.pictures.Picture;
 import fr.antoineaube.chameleon.core.processes.ChameleonProcess;
+import fr.antoineaube.chameleon.core.processes.verifications.RevealVerifier;
+import fr.antoineaube.chameleon.core.processes.verifications.VerificationException;
 
 import java.io.*;
 import java.util.Arrays;
@@ -16,7 +18,9 @@ public class Revealer extends ChameleonProcess {
         super(configuration);
     }
 
-    public InputStream process(Picture hideout) throws IOException {
+    public InputStream process(Picture hideout) throws IOException, VerificationException {
+        new RevealVerifier(getConfiguration()).verify(hideout);
+
         File temporaryFile = File.createTempFile("revealed-message-" + UUID.randomUUID(), ".tmp");
         temporaryFile.deleteOnExit();
 

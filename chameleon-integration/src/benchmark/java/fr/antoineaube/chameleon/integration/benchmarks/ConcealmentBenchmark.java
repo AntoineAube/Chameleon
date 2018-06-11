@@ -6,6 +6,7 @@ import fr.antoineaube.chameleon.core.configurations.MagicNumber;
 import fr.antoineaube.chameleon.core.pictures.Picture;
 import fr.antoineaube.chameleon.core.pictures.structures.ChannelColour;
 import fr.antoineaube.chameleon.core.processes.concealments.Concealer;
+import fr.antoineaube.chameleon.core.processes.verifications.VerificationException;
 import fr.antoineaube.chameleon.patterns.linear.horizontal.HorizontalLinearPattern;
 import fr.antoineaube.chameleon.pictures.implementations.buffered.BufferedImagePicture;
 import org.openjdk.jmh.annotations.Benchmark;
@@ -49,7 +50,7 @@ public class ConcealmentBenchmark {
     }
 
     @Benchmark
-    public void simpleConfigurationLittleMessageLittleImage() throws IOException {
+    public void simpleConfigurationLittleMessageLittleImage() throws IOException, VerificationException {
         Concealer concealer = new Concealer(simpleConfiguration());
         InputStream input = fileInput("little-message.txt");
         Picture hideout = hideout("little-image.png");
@@ -58,7 +59,7 @@ public class ConcealmentBenchmark {
     }
 
     @Benchmark
-    public void simpleConfigurationBibleChameleon() throws IOException {
+    public void simpleConfigurationBibleChameleon() throws IOException, VerificationException {
         Concealer concealer = new Concealer(simpleConfiguration());
         InputStream input = fileInput("bible.txt");
         Picture hideout = hideout("chameleon.bmp");
@@ -67,7 +68,7 @@ public class ConcealmentBenchmark {
     }
 
     @Benchmark
-    public void simpleConfigurationTimelapseOfMountainsWallpaper() throws IOException {
+    public void simpleConfigurationTimelapseOfMountainsWallpaper() throws IOException, VerificationException {
         Concealer concealer = new Concealer(simpleConfiguration());
         InputStream input = fileInput("timelapse-of-mountains.mp4");
         Picture hideout = hideout("wallpaper.png");

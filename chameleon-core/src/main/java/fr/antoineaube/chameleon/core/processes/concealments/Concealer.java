@@ -3,6 +3,8 @@ package fr.antoineaube.chameleon.core.processes.concealments;
 import fr.antoineaube.chameleon.core.configurations.ChameleonConfiguration;
 import fr.antoineaube.chameleon.core.pictures.Picture;
 import fr.antoineaube.chameleon.core.processes.ChameleonProcess;
+import fr.antoineaube.chameleon.core.processes.verifications.ConcealVerifier;
+import fr.antoineaube.chameleon.core.processes.verifications.VerificationException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,7 +22,9 @@ public class Concealer extends ChameleonProcess {
         appender = new MagicNumberAppender(configuration.getMagicNumber());
     }
 
-    public Picture process(InputStream message, Picture hideout) throws IOException {
+    public Picture process(InputStream message, Picture hideout) throws IOException, VerificationException {
+        new ConcealVerifier(getConfiguration()).verify(hideout, message);
+
         try (InputStream processedMessage = appender.appendMagicNumber(message); BitInputStream bitStream = new BitInputStream(processedMessage)) {
             for (StepConcealer step : createStepConcealers(hideout, bitStream)) {
                 step.process();

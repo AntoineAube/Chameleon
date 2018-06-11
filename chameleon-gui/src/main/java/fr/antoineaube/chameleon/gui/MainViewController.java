@@ -9,6 +9,7 @@ import fr.antoineaube.chameleon.core.pictures.exceptions.UnavailableOutputFormat
 import fr.antoineaube.chameleon.core.pictures.structures.ChannelColour;
 import fr.antoineaube.chameleon.core.processes.concealments.Concealer;
 import fr.antoineaube.chameleon.core.processes.revelations.Revealer;
+import fr.antoineaube.chameleon.core.processes.verifications.VerificationException;
 import fr.antoineaube.chameleon.patterns.linear.horizontal.HorizontalLinearPattern;
 import fr.antoineaube.chameleon.pictures.implementations.buffered.BufferedImagePicture;
 import javafx.beans.binding.Bindings;
@@ -239,7 +240,12 @@ public class MainViewController {
 
         Concealer concealer = new Concealer(getDescribedConfiguration());
 
-        Picture concealed = concealer.process(new FileInputStream(message), hideout);
+        Picture concealed = null;
+        try {
+            concealed = concealer.process(new FileInputStream(message), hideout);
+        } catch (VerificationException e) {
+            e.printStackTrace();
+        }
 
         concealed.getSaver().saveAs("bmp", output);
     }
@@ -258,7 +264,12 @@ public class MainViewController {
         }
 
         Revealer revealer = new Revealer(getDescribedConfiguration());
-        InputStream revealed = revealer.process(hideout);
+        InputStream revealed = null;
+        try {
+            revealed = revealer.process(hideout);
+        } catch (VerificationException e) {
+            e.printStackTrace();
+        }
 
         IOUtils.copy(revealed, new FileOutputStream(output));
     }

@@ -8,6 +8,7 @@ import fr.antoineaube.chameleon.core.pictures.Picture;
 import fr.antoineaube.chameleon.core.pictures.structures.ChannelColour;
 import fr.antoineaube.chameleon.core.processes.concealments.Concealer;
 import fr.antoineaube.chameleon.core.processes.revelations.Revealer;
+import fr.antoineaube.chameleon.core.processes.verifications.VerificationException;
 import fr.antoineaube.chameleon.pictures.implementations.buffered.BufferedImagePicture;
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
@@ -68,7 +69,7 @@ public abstract class BaseIT {
 
     protected abstract void describeConfiguration();
 
-    private void testCase(File imageFile, File messageFile) throws IOException {
+    private void testCase(File imageFile, File messageFile) throws IOException, VerificationException {
         ChameleonConfiguration configuration = createConfiguration();
 
         LOGGER.info("Running configuration:\n" + configuration);
