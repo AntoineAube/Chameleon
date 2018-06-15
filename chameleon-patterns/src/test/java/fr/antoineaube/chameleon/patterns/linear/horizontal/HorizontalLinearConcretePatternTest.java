@@ -2,6 +2,7 @@ package fr.antoineaube.chameleon.patterns.linear.horizontal;
 
 import fr.antoineaube.chameleon.core.pictures.Picture;
 import fr.antoineaube.chameleon.core.pictures.structures.Position;
+import fr.antoineaube.chameleon.core.processes.ConcreteConcealmentPattern;
 import fr.antoineaube.chameleon.patterns.tests.helpers.SimpleTestPicture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
@@ -30,14 +31,19 @@ class HorizontalLinearConcretePatternTest {
         return PICTURES_SAMPLES.stream().map(picture -> {
             String caseName = "With a (" + picture.getWidth() + ", " + picture.getHeight() + ")-shaped picture";
             return DynamicTest.dynamicTest(caseName, () -> {
-                HorizontalLinearConcretePattern pattern = new HorizontalLinearConcretePattern(picture);
+                ConcreteConcealmentPattern pattern = new HorizontalLinearPattern().createPattern(picture, false);
 
                 int expectedAmount = picture.getWidth() * picture.getHeight();
 
-                for (int i = 0; i < expectedAmount; i++) {
-                    assertTrue(pattern.hasNext());
+                assertEquals(expectedAmount, new HorizontalLinearPattern().countUsedPixels(picture));
+
+                int actualAmount = 0;
+                while (actualAmount < expectedAmount && pattern.hasNext()) {
+                    actualAmount++;
                     pattern.nextPosition();
                 }
+
+                assertEquals(expectedAmount, actualAmount);
 
                 assertFalse(pattern.hasNext());
             });

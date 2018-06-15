@@ -3,8 +3,9 @@ package fr.antoineaube.chameleon.patterns.linear.horizontal;
 import fr.antoineaube.chameleon.core.pictures.Picture;
 import fr.antoineaube.chameleon.core.pictures.structures.Position;
 import fr.antoineaube.chameleon.core.processes.ConcreteConcealmentPattern;
+import fr.antoineaube.chameleon.patterns.linear.TooledConcreteConcealmentPattern;
 
-public class HorizontalLinearConcretePattern extends ConcreteConcealmentPattern {
+public class HorizontalLinearConcretePattern extends TooledConcreteConcealmentPattern {
 
     public HorizontalLinearConcretePattern(Picture picture) {
         super(picture);
@@ -26,10 +27,6 @@ public class HorizontalLinearConcretePattern extends ConcreteConcealmentPattern 
 
     @Override
     protected boolean hasNextWithInitializedPosition() {
-        return !(isAtEndOfLine() && getLastPosition().getY() == getHeight() - 1);
-    }
-
-    private boolean isAtEndOfLine() {
-        return getLastPosition().getX() == getWidth() - 1;
+        return !(isAtEndOfLine() && isAtEndOfColumn());
     }
 }

@@ -1,29 +1,28 @@
-package fr.antoineaube.chameleon.patterns.linear.horizontal;
+package fr.antoineaube.chameleon.patterns.linear.vertical;
 
 import fr.antoineaube.chameleon.core.pictures.Picture;
 import fr.antoineaube.chameleon.core.pictures.structures.Position;
 import fr.antoineaube.chameleon.core.processes.ConcreteConcealmentPattern;
 import fr.antoineaube.chameleon.patterns.linear.TooledConcreteConcealmentPattern;
-import fr.antoineaube.chameleon.patterns.linear.TooledReversedConcreteConcealmentPattern;
 
-public class ReversedHorizontalLinearConcretePattern extends TooledReversedConcreteConcealmentPattern {
+public class VerticalLinearConcretePattern extends TooledConcreteConcealmentPattern {
 
-    public ReversedHorizontalLinearConcretePattern(Picture picture) {
+    public VerticalLinearConcretePattern(Picture picture) {
         super(picture);
     }
 
     @Override
     protected Position initialPosition() {
-        return new Position(getWidth() - 1, getHeight() - 1);
+        return new Position(0, 0);
     }
 
     @Override
     protected Position nextPositionWithInitializedPosition() {
-        if (isAtEndOfLine()) {
-            return new Position(getWidth() - 1, getLastPosition().getY() - 1);
+        if (isAtEndOfColumn()) {
+            return new Position(getLastPosition().getX() + 1, 0);
         }
 
-        return new Position(getLastPosition().getX() - 1, getLastPosition().getY());
+        return new Position(getLastPosition().getX(), getLastPosition().getY() + 1);
     }
 
     @Override
