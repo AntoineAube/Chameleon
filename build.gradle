@@ -1,3 +1,7 @@
+plugins {
+  id "org.sonarqube" version "2.6"
+}
+
 subprojects {
     group 'fr.antoineaube'
     version '1.0-SNAPSHOT'
@@ -27,8 +31,11 @@ subprojects {
     }
 }
 
-plugins {
-  id "org.sonarqube" version "2.6"
+sonarqube {
+    properties {
+        property "sonar.projectName", "Chameleon"
+        property "sonar.projectKey", "fr.antoineaube.chameleon"
+    }
 }
 
 task wrapper(type: Wrapper) {
