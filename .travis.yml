@@ -10,3 +10,10 @@ branches:
 cache:
   directories:
     - $HOME/.gradle
+
+addons:
+  sonarcloud:
+    organization: "antoineaube-github"
+
+script:
+- ./gradlew sonarqube
