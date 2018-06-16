@@ -2,14 +2,17 @@ package fr.antoineaube.chameleon.core.processes.revelations;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("Bit output stream")
 class BitOutputStreamTest {
@@ -47,6 +50,19 @@ class BitOutputStreamTest {
         });
     }
 
+    @DisplayName("Write several bits once")
+    @Test
+    void writeSeveralBitsOnce() throws IOException {
+        ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+
+        BitOutputStream output = new BitOutputStream(byteStream);
+        output.write(new byte[] {1, 1, 0, 1, 1, 1, 1, 0}, 0, 8);
+        output.close();
+
+        byte[] written = byteStream.toByteArray();
+        assertArrayEquals(new byte[] {(byte) 0b11011110}, written);
+    }
+
     private static class WritingCase {
 
         private int[] writtenValues;
@@ -63,5 +79,14 @@ class BitOutputStreamTest {
 
             return this;
         }
+    }
+
+    @DisplayName("Should fail if attempting to write neither 0 or 1")
+    @Test
+    void shouldFailIfWriteMoreThanBit() {
+        ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+        BitOutputStream output = new BitOutputStream(byteStream);
+
+        assertThrows(IOException.class, () -> output.write(5));
     }
 }

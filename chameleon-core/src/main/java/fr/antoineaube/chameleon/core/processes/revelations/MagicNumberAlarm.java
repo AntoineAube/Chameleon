@@ -17,7 +17,7 @@ public class MagicNumberAlarm {
 
     public void acknowledgeBit(int bit) {
         if ((bit != 0 && bit != 1) || isFull()) {
-            return; // TODO Throw an exception.
+            throw new IllegalMagicNumberUse();
         }
 
         queue.add(bit);

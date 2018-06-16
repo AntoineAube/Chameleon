@@ -97,4 +97,20 @@ class MagicNumberAlarmTest {
 
         assertTrue(alarm.isMagicNumber());
     }
+
+    @DisplayName("Should fail to add neither 0 or 1")
+    @Test
+    void shouldFailToMisuseMagicNumberByAddingNotBit() {
+        assertThrows(IllegalMagicNumberUse.class, () -> alarm.acknowledgeBit(5));
+    }
+
+    @DisplayName("Should fail to add more than authorized")
+    @Test
+    void shouldFailToMisuseMagicNumberByAddingMoreThanAuthorized() {
+        for (int i = 0; i < 16; i++) {
+            alarm.acknowledgeBit(1);
+        }
+
+        assertThrows(IllegalMagicNumberUse.class, () -> alarm.acknowledgeBit(1));
+    }
 }
