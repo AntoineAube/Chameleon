@@ -19,3 +19,7 @@ task benchmark(type: JavaExec, description: 'Executing JMH benchmarks') {
     classpath = sourceSets.benchmark.runtimeClasspath
     main = 'org.openjdk.jmh.Main'
 }
+
+sonarqube {
+    skipProject = true
+}
