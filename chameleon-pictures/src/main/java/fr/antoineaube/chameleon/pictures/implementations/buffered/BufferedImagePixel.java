@@ -38,9 +38,8 @@ public class BufferedImagePixel extends Pixel {
                 return color.getRed();
             case ALPHA:
                 return color.getAlpha();
-            case GRAY:
-                // TODO Check if that makes sense.
-                return rgb;
+
+            // TODO Handle GRAY color.
         }
 
         throw new UnavailableColourException(colour, getOrderedChannels());
@@ -64,9 +63,8 @@ public class BufferedImagePixel extends Pixel {
             case ALPHA:
                 actualizedColor = new Color(currentColor.getRed(), currentColor.getGreen(), currentColor.getBlue(), newValue);
                 break;
-            case GRAY:
-                // TODO What happens then?
-                break;
+
+            // TODO Handle GRAY color.
         }
 
         origin.setRGB(positionInPicture.getX(), positionInPicture.getY(), actualizedColor.getRGB());

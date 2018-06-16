@@ -1,5 +1,6 @@
 package fr.antoineaube.chameleon.pictures.implementations.buffered;
 
+import fr.antoineaube.chameleon.core.pictures.exceptions.UnavailableColourException;
 import fr.antoineaube.chameleon.core.pictures.structures.ChannelColour;
 import fr.antoineaube.chameleon.core.pictures.structures.Pixel;
 import fr.antoineaube.chameleon.core.pictures.structures.Position;
@@ -61,5 +62,25 @@ class BufferedImagePixelTest {
         assertEquals(2, pixel.getColourValue(ChannelColour.BLUE));
         assertEquals(3, pixel.getColourValue(ChannelColour.GREEN));
         assertEquals(253, pixel.getColourValue(ChannelColour.RED));
+    }
+
+    @DisplayName("Should fail to peek an unavailable colour")
+    @Test
+    void shouldFailToPeekAnUnavailableColour() {
+        assertThrows(UnavailableColourException.class, () -> {
+            Pixel pixel = new BufferedImagePixel(simpleImage, new Position(0, 1));
+
+            pixel.getColourValue(null);
+        });
+    }
+
+    @DisplayName("Should fail to save an unavailable colour")
+    @Test
+    void shouldFailToSaveAnUnavailableColour() {
+        assertThrows(UnavailableColourException.class, () -> {
+            Pixel pixel = new BufferedImagePixel(simpleImage, new Position(0, 1));
+
+            pixel.setColourValue(null, 3);
+        });
     }
 }

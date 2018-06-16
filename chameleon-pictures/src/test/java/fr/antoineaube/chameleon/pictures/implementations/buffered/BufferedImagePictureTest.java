@@ -2,6 +2,8 @@ package fr.antoineaube.chameleon.pictures.implementations.buffered;
 
 import fr.antoineaube.chameleon.core.pictures.Picture;
 import fr.antoineaube.chameleon.core.pictures.structures.ChannelColour;
+import fr.antoineaube.chameleon.core.pictures.structures.Pixel;
+import fr.antoineaube.chameleon.core.pictures.structures.Position;
 import org.junit.jupiter.api.Test;
 
 import javax.imageio.ImageIO;
@@ -28,5 +30,9 @@ class BufferedImagePictureTest {
 
         ChannelColour[] expectedChannels = {BLUE, GREEN, RED};
         assertArrayEquals(expectedChannels, chameleonPicture.getColourChannels());
+
+        Pixel pixel = chameleonPicture.getPixel(new Position(0, 0));
+        assertNotNull(pixel);
+        assertTrue(pixel instanceof BufferedImagePixel);
     }
 }

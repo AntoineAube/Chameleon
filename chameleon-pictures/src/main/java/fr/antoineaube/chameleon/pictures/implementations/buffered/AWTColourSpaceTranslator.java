@@ -20,9 +20,12 @@ public class AWTColourSpaceTranslator {
 
             case TYPE_4BYTE_ABGR:
             case TYPE_4BYTE_ABGR_PRE:
+                return new ChannelColour[]{ALPHA, BLUE, GREEN, RED};
+
             case TYPE_INT_ARGB:
             case TYPE_INT_ARGB_PRE:
-                return new ChannelColour[]{ALPHA, BLUE, GREEN, RED};
+                return new ChannelColour[]{ALPHA, RED, GREEN, BLUE};
+
 
             case TYPE_INT_RGB:
             case TYPE_USHORT_555_RGB:

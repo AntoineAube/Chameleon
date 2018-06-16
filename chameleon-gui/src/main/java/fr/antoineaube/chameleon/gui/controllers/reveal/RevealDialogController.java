@@ -6,11 +6,10 @@ import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.stage.FileChooser;
 
 import java.io.File;
 
-public class RevealDialogController implements ProcessDialogController<RevealInformation> {
+public class RevealDialogController extends ProcessDialogController<RevealInformation> {
 
     private RevealInformation information;
 
@@ -25,11 +24,7 @@ public class RevealDialogController implements ProcessDialogController<RevealInf
     }
 
     public void chooseImage() {
-        FileChooser chooser = new FileChooser();
-
-        chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Images files", "*.png", "*.bmp", "*.jpg"));
-
-        File chosen = chooser.showOpenDialog(imageLabel.getScene().getWindow());
+        File chosen = getImage(imageLabel);
 
         information.setHideoutFile(chosen);
 
@@ -41,8 +36,7 @@ public class RevealDialogController implements ProcessDialogController<RevealInf
     }
 
     public void chooseOutput() {
-        FileChooser chooser = new FileChooser();
-        File chosen = chooser.showOpenDialog(outputLabel.getScene().getWindow());
+        File chosen = getFile(outputLabel);
 
         information.setOutput(chosen);
 
