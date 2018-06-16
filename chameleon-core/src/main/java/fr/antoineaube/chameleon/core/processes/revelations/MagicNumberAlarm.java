@@ -16,8 +16,9 @@ public class MagicNumberAlarm {
     }
 
     public void acknowledgeBit(int bit) {
-        assert bit == 0 || bit == 1;
-        assert !isFull();
+        if ((bit != 0 && bit != 1) || !isFull()) {
+            return; // TODO Throw an exception.
+        }
 
         queue.add(bit);
     }

@@ -4,7 +4,7 @@ import fr.antoineaube.chameleon.core.processes.verifications.report.Verification
 
 public class VerificationException extends Exception {
 
-    private final VerificationReport report;
+    private final transient VerificationReport report;
 
     public VerificationException(VerificationReport report) {
         this.report = report;

@@ -2,7 +2,6 @@ package fr.antoineaube.chameleon.patterns.linear.horizontal;
 
 import fr.antoineaube.chameleon.core.pictures.Picture;
 import fr.antoineaube.chameleon.core.pictures.structures.Position;
-import fr.antoineaube.chameleon.core.processes.ConcreteConcealmentPattern;
 import fr.antoineaube.chameleon.patterns.linear.TooledConcreteConcealmentPattern;
 
 public class HorizontalLinearConcretePattern extends TooledConcreteConcealmentPattern {

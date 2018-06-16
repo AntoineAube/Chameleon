@@ -5,10 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
 public class ConcealDialog extends Dialog<ConcealInformation> {
+
+    private static Logger LOGGER = LogManager.getLogger(ConcealDialog.class);
 
     public ConcealDialog() {
         try {
@@ -31,7 +35,7 @@ public class ConcealDialog extends Dialog<ConcealInformation> {
             });
 
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("Failed to initialize the conceal dialog.", e);
         }
     }
 }

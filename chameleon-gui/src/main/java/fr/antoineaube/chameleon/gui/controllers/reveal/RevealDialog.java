@@ -5,10 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
 public class RevealDialog extends Dialog<RevealInformation> {
+
+    private static final Logger LOGGER = LogManager.getLogger(RevealDialog.class);
 
     public RevealDialog() {
         try {
@@ -31,7 +35,7 @@ public class RevealDialog extends Dialog<RevealInformation> {
             });
 
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("Failed to initialize the reveal dialog.", e);
         }
     }
 }

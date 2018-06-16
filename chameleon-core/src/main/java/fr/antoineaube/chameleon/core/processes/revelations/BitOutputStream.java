@@ -18,8 +18,17 @@ public class BitOutputStream extends OutputStream {
     }
 
     @Override
+    public void write(byte[] b, int off, int len) throws IOException {
+        for (int i = 0; i < len; i++) {
+            write((int) b[i + off]);
+        }
+    }
+
+    @Override
     public void write(int i) throws IOException {
-        assert i == 0 || i == 1;
+        if (i != 0 && i != 1) {
+            throw new IOException("Attempted to write unauthorized value in a bit output stream: " + i);
+        }
 
         byte masked = (byte) (i & MASK);
 

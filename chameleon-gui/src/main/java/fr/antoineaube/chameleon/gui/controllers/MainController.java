@@ -75,7 +75,6 @@ public class MainController {
     private Button revealButton;
 
     private ObservableList<StepModel> steps;
-    private Property<StepModel> selectedStep;
 
     @FXML
     public void initialize() {
@@ -86,7 +85,7 @@ public class MainController {
         removeStepButton.disableProperty().bind(Bindings.isNull(stepsList.getSelectionModel().selectedItemProperty()));
         stepEditionGrid.disableProperty().bind(Bindings.isNull(stepsList.getSelectionModel().selectedItemProperty()));
 
-        selectedStep = new SimpleObjectProperty<>();
+        Property<StepModel> selectedStep = new SimpleObjectProperty<>();
 
         stepsList.setCellFactory(param -> new ListCell<StepModel>() {
                     @Override

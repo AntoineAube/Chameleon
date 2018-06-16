@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.SequenceInputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -37,7 +36,7 @@ public class EnhancedSequenceInputStream extends SequenceInputStream {
     }
 
     @Override
-    public int available() throws IOException {
+    public int available() {
         return streams.stream().map(stream -> {
             try {
                 return stream.available();

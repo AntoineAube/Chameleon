@@ -13,6 +13,8 @@ import java.io.File;
 
 public class ConcealDialogController {
 
+    private static final String NOT_CHOSEN = "Not chosen";
+
     private static final String[] AVAILABLE_FORMATS = {
             "bmp",
             "png"
@@ -50,7 +52,7 @@ public class ConcealDialogController {
         information.setHideoutFile(chosen);
 
         if (chosen == null) {
-            imageLabel.setText("Not chosen");
+            imageLabel.setText(NOT_CHOSEN);
         } else {
             imageLabel.setText(chosen.getName());
         }
@@ -63,7 +65,7 @@ public class ConcealDialogController {
         information.setMessage(chosen);
 
         if (chosen == null) {
-            messageLabel.setText("Not chosen");
+            messageLabel.setText(NOT_CHOSEN);
         } else {
             messageLabel.setText(chosen.getName());
         }
@@ -76,7 +78,7 @@ public class ConcealDialogController {
         information.setOutput(chosen);
 
         if (chosen == null) {
-            outputLabel.setText("Not chosen");
+            outputLabel.setText(NOT_CHOSEN);
         } else {
             outputLabel.setText(chosen.getName());
         }
