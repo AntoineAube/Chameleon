@@ -3,10 +3,19 @@ jdk: oraclejdk8
 
 install: true
 
-branches:
-  only:
-    - master
-    
+stages:
+- name: snapshot
+  if: branch = master
+- name: release
+  if: branch = release
+
+jobs:
+  include:
+  - stage: snapshot
+    script: ./gradlew build
+  - stage: release
+    script: ./gradlew build bintrayUpload -x test -Dbintray.user=$BINTRAY_USER -Dbintray.key=$BINTRAY_KEY -Dbuild.release=true
+
 cache:
   directories:
     - $HOME/.gradle

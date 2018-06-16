@@ -1,19 +1,43 @@
 plugins {
-  id "org.sonarqube" version "2.6"
+    id "org.sonarqube" version "2.6"
+
+    id "com.jfrog.bintray" version "1.7.3"
+    id "maven-publish"
+    id "java"
+}
+
+static String buildVersion(String baseVersion) {
+    def snapshotSuffix = System.getProperty("build.release") ? "" : "-SNAPSHOT"
+
+    "${baseVersion}${snapshotSuffix}"
+}
+
+def currentVersion = buildVersion '1.0'
+
+allprojects {
+    group 'fr.antoineaube'
+    version currentVersion
+
+    buildscript {
+        repositories {
+            mavenLocal()
+            mavenCentral()
+            jcenter()
+        }
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
 }
 
 subprojects {
-    group 'fr.antoineaube'
-    version '1.0-SNAPSHOT'
-
     apply plugin: 'java'
     apply plugin: 'jacoco'
 
     sourceCompatibility = 1.8
-
-    repositories {
-        mavenCentral()
-    }
 
     dependencies {
         compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.0'
@@ -39,6 +63,67 @@ sonarqube {
     }
 }
 
+bintray {
+    user = System.getProperty('bintray.user')
+    key = System.getProperty('bintray.key')
+    publications = ['core', 'gui', 'patterns', 'pictures']
+
+    pkg {
+        repo = 'awesome-projects'
+        name = 'Chameleon'
+        desc = 'Both a framework and an application for steganography'
+        userOrg = 'antoineaube'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/AntoineAube/Chameleon.git'
+
+        version {
+            name = '1.0'
+            desc = '1.0'
+            released  = new Date()
+        }
+    }
+}
+
 task wrapper(type: Wrapper) {
     gradleVersion = '4.7'
+}
+
+artifacts {
+    archives file('gradlew')
+}
+
+publishing {
+    publications {
+        core(MavenPublication) {
+            groupId project.group
+            artifactId 'chameleon-core'
+            version project.version
+
+            artifact file("chameleon-core/build/libs/chameleon-core-${project.version}.jar")
+        }
+
+        gui(MavenPublication) {
+            groupId project.group
+            artifactId 'chameleon-gui'
+            version project.version
+
+            artifact file("chameleon-gui/build/libs/chameleon-gui-${project.version}.jar")
+        }
+
+        patterns(MavenPublication) {
+            groupId project.group
+            artifactId 'chameleon-patterns'
+            version project.version
+
+            artifact file("chameleon-patterns/build/libs/chameleon-patterns-${project.version}.jar")
+        }
+
+        pictures(MavenPublication) {
+            groupId project.group
+            artifactId 'chameleon-pictures'
+            version project.version
+
+            artifact file("chameleon-pictures/build/libs/chameleon-pictures-${project.version}.jar")
+        }
+    }
 }
