@@ -1,5 +1,6 @@
 package fr.antoineaube.chameleon.gui.controllers.conceal;
 
+import fr.antoineaube.chameleon.gui.controllers.ProcessDialogController;
 import fr.antoineaube.chameleon.gui.models.ConcealInformation;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
@@ -11,7 +12,7 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 
-public class ConcealDialogController {
+public class ConcealDialogController implements ProcessDialogController<ConcealInformation> {
 
     private static final String NOT_CHOSEN = "Not chosen";
 

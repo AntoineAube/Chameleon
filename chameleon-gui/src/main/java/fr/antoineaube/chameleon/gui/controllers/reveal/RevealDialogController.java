@@ -1,5 +1,6 @@
 package fr.antoineaube.chameleon.gui.controllers.reveal;
 
+import fr.antoineaube.chameleon.gui.controllers.ProcessDialogController;
 import fr.antoineaube.chameleon.gui.models.RevealInformation;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
@@ -9,7 +10,7 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 
-public class RevealDialogController {
+public class RevealDialogController implements ProcessDialogController<RevealInformation> {
 
     private RevealInformation information;
 
