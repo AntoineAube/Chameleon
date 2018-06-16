@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class ConcealDialog extends Dialog<ConcealInformation> {
 
-    private static Logger LOGGER = LogManager.getLogger(ConcealDialog.class);
+    private static final Logger LOGGER = LogManager.getLogger(ConcealDialog.class);
 
     public ConcealDialog() {
         try {
