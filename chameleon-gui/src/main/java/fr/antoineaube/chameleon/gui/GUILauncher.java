@@ -16,12 +16,12 @@ public class GUILauncher extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        URL mainViewUrl = getClass().getClassLoader().getResource("fxml/MainView.fxml");
+        URL mainViewUrl = getClass().getClassLoader().getResource("fxml/Main.fxml");
 
         assert mainViewUrl != null;
 
         Parent root = FXMLLoader.load(mainViewUrl);
-        Scene scene = new Scene(root, 750, 300);
+        Scene scene = new Scene(root);
 
         primaryStage.setTitle("Chameleon");
         primaryStage.setScene(scene);
